@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Password Strength Analyzer</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <span class="logo">🔐</span>
+    <h2>Password Analyzer</h2>
+  </div>
+
+  <div class="input-wrapper">
+    <input type="password" id="password" placeholder="Enter your password..." autocomplete="off">
+    <button id="toggleVisibility" class="icon-btn" title="Show/Hide Password">👁</button>
+  </div>
+
+  <div class="progress-wrapper">
+    <div class="progress">
+      <div id="fill"></div>
+    </div>
+    <span id="strength" class="strength-label">—</span>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card">
+      <span class="stat-label">Score</span>
+      <span id="score" class="stat-value">0 / 100</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-label">Entropy</span>
+      <span id="entropy" class="stat-value">0 bits</span>
+    </div>
+    <div class="stat-card full-width">
+      <span class="stat-label">⏱ Estimated Crack Time</span>
+      <span id="crack" class="stat-value">Instantly</span>
+    </div>
+  </div>
+
+  <div id="checklist">
+    <p class="checklist-title">Requirements</p>
+    <ul>
+      <li id="chk-length">  8+ characters</li>
+      <li id="chk-upper">  Uppercase letter (A–Z)</li>
+      <li id="chk-lower">  Lowercase letter (a–z)</li>
+      <li id="chk-number">  Number (0–9)</li>
+      <li id="chk-symbol">  Special character (!@#…)</li>
+    </ul>
+  </div>
+
+  <div class="slider-box">
+    <label>Generate Length: <span id="lengthValue">16</span></label>
+    <input type="range" id="length" min="8" max="32" value="16">
+  </div>
+
+  <div class="btn-row">
+    <button id="generate">⚡ Generate</button>
+    <button id="copy" class="btn-secondary">📋 Copy</button>
+  </div>
+
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

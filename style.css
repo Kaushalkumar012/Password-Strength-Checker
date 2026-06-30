@@ -1,0 +1,46 @@
+#psa-meter {
+  display: none;
+  position: absolute;
+  z-index: 2147483647;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  border-radius: 10px;
+  padding: 12px 14px;
+  min-width: 200px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+}
+
+#psa-header {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+#psa-bar-wrap {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+#psa-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 20px;
+  background: #ff3b30;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+#psa-status {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  transition: color 0.3s;
+}

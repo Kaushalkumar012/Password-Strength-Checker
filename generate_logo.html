@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head><title>Store Logo Generator</title></head>
+<body>
+<p>Generating store logo... check your downloads folder!</p>
+<canvas id="c"></canvas>
+<script>
+  function generateLogo() {
+    const size = 300;
+    const canvas = document.getElementById("c");
+    canvas.width = size;
+    canvas.height = size;
+    const ctx = canvas.getContext("2d");
+
+    const cx = size / 2;
+    const cy = size / 2;
+
+    // Background gradient
+    const bgGrad = ctx.createLinearGradient(0, 0, size, size);
+    bgGrad.addColorStop(0, "#0f0c29");
+    bgGrad.addColorStop(0.5, "#302b63");
+    bgGrad.addColorStop(1, "#24243e");
+    ctx.fillStyle = bgGrad;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, size, size, 60);
+    ctx.fill();
+
+    // Outer glow
+    const glow = ctx.createRadialGradient(cx, cy, 20, cx, cy, 160);
+    glow.addColorStop(0, "rgba(139, 92, 246, 0.4)");
+    glow.addColorStop(1, "rgba(99, 102, 241, 0)");
+    ctx.fillStyle = glow;
+    ctx.beginPath();
+    ctx.arc(cx, cy, 160, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Shield
+    ctx.save();
+    ctx.translate(cx, cy - 10);
+    const sh = 160;
+    const sw = 130;
+
+    ctx.beginPath();
+    ctx.moveTo(0, -sh / 2);
+    ctx.bezierCurveTo( sw/2, -sh/2,  sw/2, -sh*0.05,  sw/2,  sh*0.1);
+    ctx.bezierCurveTo( sw/2,  sh*0.4,  0,  sh/2,  0,  sh/2);
+    ctx.bezierCurveTo(-sw/2,  sh/2, -sw/2,  sh*0.4, -sw/2,  sh*0.1);
+    ctx.bezierCurveTo(-sw/2, -sh*0.05, -sw/2, -sh/2,  0, -sh/2);
+    ctx.closePath();
+
+    const shieldGrad = ctx.createLinearGradient(-sw/2, -sh/2, sw/2, sh/2);
+    shieldGrad.addColorStop(0, "#6366f1");
+    shieldGrad.addColorStop(1, "#8b5cf6");
+    ctx.fillStyle = shieldGrad;
+    ctx.fill();
+
+    // Shield border
+    ctx.strokeStyle = "rgba(196, 181, 253, 0.6)";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+
+    ctx.restore();
+
+    // Lock body
+    const lbw = 58;
+    const lbh = 42;
+    const lbx = cx - lbw / 2;
+    const lby = cy + 8;
+
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.roundRect(lbx, lby, lbw, lbh, 10);
+    ctx.fill();
+
+    // Lock shackle
+    ctx.beginPath();
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 13;
+    ctx.lineCap = "round";
+    ctx.arc(cx, lby, 22, Math.PI, 0, false);
+    ctx.stroke();
+
+    // Keyhole circle
+    ctx.beginPath();
+    ctx.fillStyle = "#7c3aed";
+    ctx.arc(cx, lby + lbh * 0.42, 8, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Keyhole slot
+    ctx.fillStyle = "#7c3aed";
+    ctx.fillRect(cx - 3, lby + lbh * 0.42, 6, 10);
+
+    // Shine overlay
+    const shine = ctx.createLinearGradient(0, 0, 0, size * 0.5);
+    shine.addColorStop(0, "rgba(255,255,255,0.1)");
+    shine.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = shine;
+    ctx.beginPath();
+    ctx.roundRect(0, 0, size, size, 60);
+    ctx.fill();
+
+    return canvas.toDataURL("image/png");
+  }
+
+  function download(dataUrl, filename) {
+    const a = document.createElement("a");
+    a.href = dataUrl;
+    a.download = filename;
+    a.click();
+  }
+
+  setTimeout(() => {
+    download(generateLogo(), "store_logo.png");
+  }, 500);
+</script>
+</body>
+</html>
