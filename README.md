@@ -137,12 +137,6 @@ Entropy = length × log2(characterPoolSize)
 
 ---
 
-## 📸 Screenshots
-
-> Load the extension and take screenshots to add here!
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to:
